@@ -14,7 +14,7 @@ const signUpRoute = require('./routes/signUpRoute')
 const loginRoute = require('./routes/loginRoute')
 const weatherRoute = require('./routes/weatherRoute')
 const restoRoute = require('./routes/restoRoute')
-
+const recipeRoute = require('./routes/recipeRoute')
 app
   .use(cors())
   .use(express.urlencoded({extended:false}))
@@ -24,7 +24,7 @@ app
   .use('/login', loginRoute)
   .use('/weather', weatherRoute)
   .use('/restaurant', restoRoute)
-
+  .use('/recipes', recipeRoute)
   .get('/', (req, res) => {
     res.status(200).json({
       message: 'Server is On'

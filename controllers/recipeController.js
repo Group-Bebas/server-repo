@@ -41,6 +41,25 @@ class RecipeController {
               })
           })
     }
+
+    // get detail recipes
+    static getDetailRecipe(req,res){
+        axios({
+            method: 'GET',
+            url: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.body.mealid}`
+        })
+          .then(result=>{
+              res.status(200).json({
+                  msg: 'Detail recipe',
+                  data: result.data.meals
+              })
+          })
+          .catch(error=>{
+              res.status(500).json({
+                  msg: 'ERROR ', error
+              })
+          })
+    }
 }
 
 module.exports = RecipeController

@@ -22,6 +22,25 @@ class RecipeController {
               })
           })
     }
+
+    // get lists inside the category
+    static listByCategory(req,res){
+        axios({
+            method: 'GET',
+            url: `https://www.themealdb.com/api/json/v1/1/filter.php?c=${req.body.category}`
+        })
+          .then(results =>{
+              res.status(200).json({
+                  msg: `List of recipes by category: ${req.body.category}`,
+                  data: results.data
+              })
+          })
+          .catch(error =>{
+              res.status(500).json({
+                  mgs: 'ERROR ',error
+              })
+          })
+    }
 }
 
 module.exports = RecipeController

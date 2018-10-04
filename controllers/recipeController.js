@@ -60,6 +60,25 @@ class RecipeController {
               })
           })
     }
+
+    // get random recipes
+    static getRandomRecipe(req,res){
+        axios({
+            method: 'GET',
+            url: 'https://www.themealdb.com/api/json/v1/1/random.php'
+        })
+          .then(result =>{
+              res.status(200).json({
+                  msg: 'Random recipe',
+                  data: result.data.meals
+              })
+          })
+          .catch(error =>{
+              res.status(500).json({
+                  msg: 'ERROR: ',error
+              })
+          })
+    }
 }
 
 module.exports = RecipeController

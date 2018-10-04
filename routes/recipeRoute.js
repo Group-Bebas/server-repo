@@ -7,5 +7,6 @@ const RecipeController = require('../controllers/recipeController')
 router.get('/category', RecipeController.getCategory)
       .post('/listbycategory', RecipeController.listByCategory)
       .post('/detail', RecipeController.getDetailRecipe)
+      .get('/random', RecipeController.getRandomRecipe)
 
 module.exports = router

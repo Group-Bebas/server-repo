@@ -16,6 +16,8 @@ const loginRoute = require('./routes/loginRoute')
 const weatherRoute = require('./routes/weatherRoute')
 const restoRoute = require('./routes/restoRoute')
 const recipeRoute = require('./routes/recipeRoute')
+const matrixRoute = require('./routes/matrixRoute')
+
 app
   .use(cors())
   .use(express.urlencoded({extended:false}))
@@ -27,6 +29,7 @@ app
   .use('/restaurant', restoRoute)
   .use('/recipes', recipeRoute)
   .use('/place', placeRoute)
+  .use('/matrix/distance', matrixRoute)
 
   .get('/', (req, res) => {
     res.status(200).json({

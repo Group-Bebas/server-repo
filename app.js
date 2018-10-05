@@ -10,6 +10,7 @@ const db = mongoose.connection
 mongoose.set('useCreateIndex', true)
 mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true })
 
+const placeRoute = require('./routes/placeRoute')
 const signUpRoute = require('./routes/signUpRoute')
 const loginRoute = require('./routes/loginRoute')
 
@@ -20,6 +21,7 @@ app
 
   .use('/register', signUpRoute)
   .use('/login', loginRoute)
+  .use('/place', placeRoute)
 
   .get('/', (req, res) => {
     res.status(200).json({

@@ -200,9 +200,11 @@ module.exports = {
     getSearch: (req, res) => {
         let entity_id = req.params.id || ''
         let entity_type = req.params.type || ''
+        let sort = req.params.sort || 'rating'
+        let order = req.params.order || 'desc'
         axios({
             method: 'GET',
-            url: `https://developers.zomato.com/api/v2.1/search?entity_id=${entity_id}&entity_type=${entity_type}&sort=rating&order=desc`,
+            url: `https://developers.zomato.com/api/v2.1/search?entity_id=${entity_id}&entity_type=${entity_type}&sort=${sort}&order=${order}`,
             headers: {
                 'user-key': process.env.ZOMATO_TOKEN
             }

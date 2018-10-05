@@ -3,7 +3,6 @@ const axios = require('axios')
 class MatrixController {
 
   static getDistance(req, res) {
-    console.log(req.body, '==================>')
     let latOrigin = req.body.lat
     let lngOrigin = req.body.lng
     let address = req.body.address

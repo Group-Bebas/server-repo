@@ -13,6 +13,7 @@ mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true })
 const placeRoute = require('./routes/placeRoute')
 const signUpRoute = require('./routes/signUpRoute')
 const loginRoute = require('./routes/loginRoute')
+const matrixRoute = require('./routes/matrixRoute')
 
 app
   .use(cors())
@@ -22,6 +23,7 @@ app
   .use('/register', signUpRoute)
   .use('/login', loginRoute)
   .use('/place', placeRoute)
+  .use('/matrix/distance', matrixRoute)
 
   .get('/', (req, res) => {
     res.status(200).json({

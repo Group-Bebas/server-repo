@@ -135,6 +135,7 @@ module.exports = {
         })
         .then( response => {
             let result = response.data
+            console.log(response)
             res.status(200).json({found: result})
         })
         .catch( err => {
@@ -206,9 +207,8 @@ module.exports = {
             }
         })
         .then( response => {
-            // console.log(response.data.restaurants[0].restaurant.name)
             let result = response.data.restaurants
-            console.log(result[0].restaurant.id)
+            // console.log(result[0].restaurant.id)
             res.status(200).json({restaurants: result})
         })
         .catch( err => {

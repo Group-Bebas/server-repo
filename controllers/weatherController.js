@@ -14,7 +14,7 @@ class WeatherController {
          url:`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=${process.env.APIKEY_WEATHER}`
      })
      .then((result) => {
-        //console.log(result)
+        console.log(result)
 
         let arrObj=[];
         let d=result.data.list[0].dt_txt;
@@ -31,7 +31,7 @@ class WeatherController {
         };
         arrObj.push(objF);
         
-        console.log(result.data.list.length)
+        // console.log(result.data.list.length)
         for (let i = 1; i < result.data.list.length; i++) {
             let d=result.data.list[i].dt_txt;            
             let k=arrObj.length-1

@@ -5,11 +5,11 @@ const RecipeController = require('../controllers/recipeController')
 const isLogin = require('../middleware/isLogin')
 
 // get category
-router.get('/category', RecipeController.getCategory)
-      .post('/listbycategory', RecipeController.listByCategory)
-      .post('/detail', RecipeController.getDetailRecipe)
-      .get('/random', RecipeController.getRandomRecipe)
-      .post('/search', RecipeController.searchByKeyword)
+router.get('/category', isLogin, RecipeController.getCategory)
+      .post('/listbycategory', isLogin, RecipeController.listByCategory)
+      .post('/detail', isLogin, RecipeController.getDetailRecipe)
+      .get('/random', isLogin, RecipeController.getRandomRecipe)
+      .post('/search', isLogin, RecipeController.searchByKeyword)
 
 
 module.exports = router

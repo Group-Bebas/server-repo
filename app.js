@@ -16,6 +16,7 @@ const loginRoute = require('./routes/loginRoute')
 const weatherRoute = require('./routes/weatherRoute')
 const restoRoute = require('./routes/restoRoute')
 const recipeRoute = require('./routes/recipeRoute')
+const matrixRoute = require('./routes/matrixRoute')
 
 app
   .use(cors())

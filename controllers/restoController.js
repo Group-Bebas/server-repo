@@ -234,6 +234,7 @@ module.exports = {
             res.status(200).json({restaurants: result})
         })
         .catch( err => {
+            console.log('err')
             res.send(500).json({err:"Internal server error"})
         })
     }

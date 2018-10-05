@@ -8,5 +8,6 @@ router.get('/category', RecipeController.getCategory)
       .post('/listbycategory', RecipeController.listByCategory)
       .post('/detail', RecipeController.getDetailRecipe)
       .get('/random', RecipeController.getRandomRecipe)
+      .post('/search', RecipeController.searchByKeyword)
 
 module.exports = router

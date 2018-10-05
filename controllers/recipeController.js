@@ -61,6 +61,33 @@ class RecipeController {
           })
     }
 
+    // get search
+    static searchByKeyword(req,res){
+        axios({
+            method: 'GET',
+            url: `https://www.themealdb.com/api/json/v1/1/filter.php?c=${req.body.category}`
+        })
+          .then(results =>{
+            let hasil = results.data.meals
+            let sortedArr = []
+            let regex = new RegExp(`${req.body.keyword}`,'i');
+            hasil.forEach(recipe => {
+                if(regex.test(recipe['strMeal'])){
+                    sortedArr.push(recipe)
+                }
+            });
+              res.status(200).json({
+                  msg: `List of sorted recipes by category: ${req.body.category}`,
+                  data: sortedArr
+              })
+          })
+          .catch(error =>{
+              res.status(500).json({
+                  mgs: 'ERROR ',error
+              })
+          })
+    }
+
     // get random recipes
     static getRandomRecipe(req,res){
         axios({

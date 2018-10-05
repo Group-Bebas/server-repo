@@ -14,6 +14,9 @@ const placeRoute = require('./routes/placeRoute')
 const signUpRoute = require('./routes/signUpRoute')
 const loginRoute = require('./routes/loginRoute')
 const matrixRoute = require('./routes/matrixRoute')
+const weatherRoute = require('./routes/weatherRoute')
+const restoRoute = require('./routes/restoRoute')
+const recipeRoute = require('./routes/recipeRoute')
 
 app
   .use(cors())
@@ -24,7 +27,9 @@ app
   .use('/login', loginRoute)
   .use('/place', placeRoute)
   .use('/matrix/distance', matrixRoute)
-
+  .use('/weather', weatherRoute)
+  .use('/restaurant', restoRoute)
+  .use('/recipes', recipeRoute)
   .get('/', (req, res) => {
     res.status(200).json({
       message: 'Server is On'

@@ -17,7 +17,6 @@ const matrixRoute = require('./routes/matrixRoute')
 const weatherRoute = require('./routes/weatherRoute')
 const restoRoute = require('./routes/restoRoute')
 const recipeRoute = require('./routes/recipeRoute')
-const matrixRoute = require('./routes/matrixRoute')
 
 app
   .use(cors())
@@ -27,7 +26,6 @@ app
   .use('/register', signUpRoute)
   .use('/login', loginRoute)
   .use('/place', placeRoute)
-  .use('/matrix/distance', matrixRoute)
   .use('/weather', weatherRoute)
   .use('/restaurant', restoRoute)
   .use('/recipes', recipeRoute)

@@ -125,7 +125,7 @@ module.exports = {
     },
 
     getLocations: (req, res) => {
-        let query = req.params.query || 'jakarta'
+        let query = req.params.q || 'jakarta'
         axios({
             method: 'GET',
             url: `https://developers.zomato.com/api/v2.1/locations?query=${query}`,
@@ -134,9 +134,9 @@ module.exports = {
             }
         })
         .then( response => {
-            let result = response.data
-            console.log(response)
-            res.status(200).json({found: result})
+            let result = response.data.location_suggestions[0]
+            // console.log(response.data.location_suggestions[0].title)
+            res.status(200).json({data: result})
         })
         .catch( err => {
             res.send(500).json({err:"Internal server error"})
@@ -198,6 +198,26 @@ module.exports = {
     },
 
     getSearch: (req, res) => {
+        let entity_id = req.params.id || ''
+        let entity_type = req.params.type || ''
+        axios({
+            method: 'GET',
+            url: `https://developers.zomato.com/api/v2.1/search?entity_id=${entity_id}&entity_type=${entity_type}&sort=rating&order=desc`,
+            headers: {
+                'user-key': process.env.ZOMATO_TOKEN
+            }
+        })
+        .then( response => {
+            let result = response.data.restaurants
+            console.log(result[0].restaurant)
+            res.status(200).json({restaurants: result})
+        })
+        .catch( err => {
+            res.send(500).json({err:"Internal server error"})
+        })
+    },
+
+    getSearchHome: (req, res) => {
         let q = req.params.q || 'jakarta'
         axios({
             method: 'GET',
@@ -208,7 +228,7 @@ module.exports = {
         })
         .then( response => {
             let result = response.data.restaurants
-            // console.log(result[0].restaurant.id)
+            console.log(result[0].restaurant)
             res.status(200).json({restaurants: result})
         })
         .catch( err => {

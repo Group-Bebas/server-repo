@@ -13,6 +13,7 @@ mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true })
 const signUpRoute = require('./routes/signUpRoute')
 const loginRoute = require('./routes/loginRoute')
 const weatherRoute = require('./routes/weatherRoute')
+const restoRoute = require('./routes/restoRoute')
 
 app
   .use(cors())
@@ -22,6 +23,7 @@ app
   .use('/register', signUpRoute)
   .use('/login', loginRoute)
   .use('/weather', weatherRoute)
+  .use('/restaurant', restoRoute)
 
   .get('/', (req, res) => {
     res.status(200).json({

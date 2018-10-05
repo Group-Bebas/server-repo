@@ -10,6 +10,7 @@ const db = mongoose.connection
 mongoose.set('useCreateIndex', true)
 mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true })
 
+const placeRoute = require('./routes/placeRoute')
 const signUpRoute = require('./routes/signUpRoute')
 const loginRoute = require('./routes/loginRoute')
 const weatherRoute = require('./routes/weatherRoute')
@@ -25,6 +26,8 @@ app
   .use('/weather', weatherRoute)
   .use('/restaurant', restoRoute)
   .use('/recipes', recipeRoute)
+  .use('/place', placeRoute)
+
   .get('/', (req, res) => {
     res.status(200).json({
       message: 'Server is On'
